@@ -7,13 +7,13 @@ const App = (() => {
     inputEl.addEventListener("keypress", (e) => {
       if (e.keyCode === 13) {
         render();
-        createTask();
+        addTaskFunctionality();
         inputEl.value = "";
       }
     });
   };
 
-  const createTask = () => {
+  const addTaskFunctionality = () => {
     const tasks = ulEl.children;
     for (let i = 0; i < tasks.length; i++) {
       tasks[i].addEventListener("click", (e) => {
