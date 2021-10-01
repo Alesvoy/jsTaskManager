@@ -2,21 +2,35 @@ const App = (() => {
   // Caching the DOM
   const inputEl = document.querySelector("input");
   const ulEl = document.querySelector(".task__list");
-  const removeBtn = document.querySelector(".complete");
 
   const eventListeners = () => {
     inputEl.addEventListener("keypress", (e) => {
       if (e.keyCode === 13) {
         render();
+        createTask();
         inputEl.value = "";
       }
     });
   };
 
+  const createTask = () => {
+    const tasks = ulEl.children;
+    for (let i = 0; i < tasks.length; i++) {
+      tasks[i].addEventListener("click", (e) => {
+        // console.log(e.target.className);
+        if (e.target.className == "remove") {
+          tasks[i].remove();
+        } else {
+          tasks[i].classList.toggle("done");
+        }
+      });
+    }
+  };
+
   const render = () => {
     ulEl.innerHTML += `
       <li class="task__item">
-        ${inputEl.value} <button class="complete">Complete</button>
+        ${inputEl.value} <button class="remove">Complete</button>
       </li>`;
   };
 

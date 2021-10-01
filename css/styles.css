@@ -13,3 +13,11 @@
 input {
   margin: 0.5rem 0;
 }
+
+li:hover {
+  cursor: pointer;
+}
+
+.done {
+  text-decoration: line-through;
+}
